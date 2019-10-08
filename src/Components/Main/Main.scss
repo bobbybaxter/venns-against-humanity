@@ -1,3 +1,18 @@
 .Main {
   display: block;
 }
+
+svg path {
+  stroke: white;
+  stroke-width: 2px;
+}
+
+svg text {
+  fill: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+[data-venn-sets="A"] { fill: orange; }
+[data-venn-sets="B"] { fill: blue; }
+[data-venn-sets="C"] { fill: brown; }
