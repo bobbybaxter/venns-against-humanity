@@ -57,7 +57,7 @@ class Main extends React.Component {
       { sets: [B, C], size: intersectionCircleSize, label: BC },
       { sets: [A, B, C], size: centerCircleSize, label: ABC },
     ];
-    const chart = venn.VennDiagram().width(1200).height(700).styled(false);
+    const chart = venn.VennDiagram().width(1200).height(700);
     d3.select(this.refs.venn)
       .datum(sets)
       .call(chart);

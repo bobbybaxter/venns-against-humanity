@@ -2,14 +2,22 @@
   display: block;
 }
 
-svg path {
-  stroke: white;
-  stroke-width: 2px;
+// svg path {
+//   stroke: white;
+//   stroke-width: 2px;
+// }
+
+// svg text {
+//   fill: white;
+//   font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+//   font-size: 14px;
+// }
+
+.venn-circle {
+  font-size: 24px;
 }
 
-svg text {
-  fill: white;
-  font-family: "Helvetica Neue", Helvetica, Arial, Helvetica, sans-serif;
+.venn-intersection {
   font-size: 14px;
 }
 
