@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
 import React from 'react';
-// import * as d3 from 'd3';
-// import * as venn from 'venn.js';
 import base from '../../Helpers/Data/base.json';
 import Diagram from '../Diagram/Diagram';
 
@@ -24,15 +22,18 @@ class Main extends React.Component {
   selectRandomCards = () => {
     const { blackCards, whiteCards } = this.state;
     const randomCards = [];
-    const circleA = whiteCards[Math.floor(Math.random() * whiteCards.length)];
-    const circleB = whiteCards[Math.floor(Math.random() * whiteCards.length)];
-    const circleC = whiteCards[Math.floor(Math.random() * whiteCards.length)];
+    const circleAText = whiteCards[Math.floor(Math.random() * whiteCards.length)];
+    const circleA = `c1 ${circleAText}`;
+    const circleBText = whiteCards[Math.floor(Math.random() * whiteCards.length)];
+    const circleB = `c1 ${circleBText}`;
+    const circleCText = whiteCards[Math.floor(Math.random() * whiteCards.length)];
+    const circleC = `c1 ${circleCText}`;
     const circleAB = blackCards[Math.floor(Math.random() * blackCards.length)];
     const circleAC = blackCards[Math.floor(Math.random() * blackCards.length)];
     const circleBC = blackCards[Math.floor(Math.random() * blackCards.length)];
     const circleABC = blackCards[Math.floor(Math.random() * blackCards.length)];
     randomCards.push([circleA, circleB, circleC, circleAB, circleAC, circleBC, circleABC]);
-    // return randomCards;
+    console.error('randomCards', randomCards);
     this.setState({ displayedCards: randomCards });
   }
 
@@ -66,29 +67,20 @@ class Main extends React.Component {
   }
 
   render() {
-    // PUT THE VENN DIAGRAM IN ITS OWN MODULE, SO THAT YOU CAN KEEP THE VALUES IN STATE (EITHER IN MAIN OR THE VENN MODULE)
-    // SO THAT IT CAN'T BE CHANGED WHEN THE WINDOW HAS BEEN RESIZED.
-
     let printDiagram = '';
-    // eslint-disable-next-line no-constant-condition
     if (this.state.blackCards.length > 0) {
       printDiagram = <Diagram
           blackCards = {this.state.blackCards}
           whiteCards = {this.state.whiteCards}
           displayedCards = {this.state.displayedCards}
-          // drawVenn = {this.drawVenn}
-          // selectRandomCards = {this.selectRandomCards}
+          selectRandomCards = {this.selectRandomCards}
           setupDiagram = {this.setupDiagram}
-          // updateWindowDimensions = {this.updateWindowDimensions}
         />;
     }
 
     return (
         <div>
           {printDiagram}
-          <div className="d-flex flex-column justify-content-center align-items-center">
-            <button className="btn btn-primary" onClick={this.selectRandomCards}>Randomize!</button>
-          </div>
         </div>
     );
   }

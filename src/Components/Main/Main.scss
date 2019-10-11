@@ -14,13 +14,39 @@
 // }
 
 .venn-circle {
-  font-size: 24px;
+  font-size: 11px;
 }
 
 .venn-intersection {
-  font-size: 14px;
+  font-size: 7px;
 }
 
-[data-venn-sets="A"] { fill: orange; }
-[data-venn-sets="B"] { fill: blue; }
-[data-venn-sets="C"] { fill: brown; }
+@media only screen and (min-height: 350px) {
+  .venn-circle {
+    font-size: 12px;
+  }
+
+  .venn-intersection {
+    font-size: 8px;
+  }
+}
+
+@media only screen and (min-height: 500px) {
+  .venn-circle {
+    font-size: 14px;
+  }
+
+  .venn-intersection {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (min-height: 700px) {
+  .venn-circle {
+    font-size: 16px;
+  }
+
+  .venn-intersection {
+    font-size: 12px;
+  }
+}
