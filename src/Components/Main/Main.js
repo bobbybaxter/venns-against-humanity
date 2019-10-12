@@ -12,6 +12,7 @@ class Main extends React.Component {
     blackCards: [],
     whiteCards: [],
     displayedCards: [],
+    expansions: [],
   }
 
   componentDidMount() {
@@ -33,7 +34,6 @@ class Main extends React.Component {
     const circleBC = blackCards[Math.floor(Math.random() * blackCards.length)];
     const circleABC = blackCards[Math.floor(Math.random() * blackCards.length)];
     randomCards.push([circleA, circleB, circleC, circleAB, circleAC, circleBC, circleABC]);
-    console.error('randomCards', randomCards);
     this.setState({ displayedCards: randomCards });
   }
 
@@ -66,15 +66,21 @@ class Main extends React.Component {
     return sets;
   }
 
+  updateMainExpansions = (expansions) => {
+    this.setState({ expansions });
+  }
+
   render() {
     let printDiagram = '';
     if (this.state.blackCards.length > 0) {
       printDiagram = <Diagram
-          blackCards = {this.state.blackCards}
-          whiteCards = {this.state.whiteCards}
-          displayedCards = {this.state.displayedCards}
-          selectRandomCards = {this.selectRandomCards}
-          setupDiagram = {this.setupDiagram}
+          blackCards={this.state.blackCards}
+          displayedCards={this.state.displayedCards}
+          expansions={this.state.expansions}
+          selectRandomCards={this.selectRandomCards}
+          setupDiagram={this.setupDiagram}
+          updateMainExpansions={this.updateMainExpansions}
+          whiteCards={this.state.whiteCards}
         />;
     }
 
