@@ -46,7 +46,7 @@ class Diagram extends React.Component {
 
     return (
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <h1 className="mt-3">Venn Against Humanity</h1>
+        <h1 className="mt-3">Venns Against Humanity</h1>
         {this.drawVenn()}
         <div className="d-flex flex-row justify-content-center align-items-center">
           <button className="btn btn-primary mx-1" onClick={this.props.selectRandomCards}>Randomize!</button>
