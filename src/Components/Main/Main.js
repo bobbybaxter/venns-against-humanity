@@ -1,22 +1,81 @@
 /* eslint-disable max-len */
 import React from 'react';
 import base from '../../Helpers/Data/base.json';
+import CAHe1 from '../../Helpers/Data/theFirstExpansion.json';
+import CAHe2 from '../../Helpers/Data/theSecondExpansion.json';
+import CAHe3 from '../../Helpers/Data/theThirdExpansion.json';
+import CAHe4 from '../../Helpers/Data/theFourthExpansion.json';
+import CAHe5 from '../../Helpers/Data/theFifthExpansion.json';
+import CAHe6 from '../../Helpers/Data/theSixthExpansion.json';
+import greenbox from '../../Helpers/Data/greenBoxExpansion.json';
+import nineties from '../../Helpers/Data/90sNostalgiaExpansion.json';
+import Box from '../../Helpers/Data/boxExpansion.json';
+import fantasy from '../../Helpers/Data/fantasyExpansion.json';
+import food from '../../Helpers/Data/foodExpansion.json';
+import science from '../../Helpers/Data/scienceExpansion.json';
+import www from '../../Helpers/Data/worldWideWebExpansion.json';
+import hillary from '../../Helpers/Data/voteForHillaryExpansion.json';
+import trumpvote from '../../Helpers/Data/voteForTrumpExpansion.json';
+import trumpbag from '../../Helpers/Data/trumpSurvivalExpansion.json';
+import xmas2012 from '../../Helpers/Data/holiday2012Expansion.json';
+import xmas2013 from '../../Helpers/Data/holiday2013Expansion.json';
+import PAXE2013 from '../../Helpers/Data/paxEast2013Expansion.json';
+import PAXP2013 from '../../Helpers/Data/paxPrime2013Expansion.json';
+import PAXE2014 from '../../Helpers/Data/paxEast2014Expansion.json';
+import PAXEP2014 from '../../Helpers/Data/paxEast2014PanelExpansion.json';
+import PAXPP2014 from '../../Helpers/Data/paxPrime2014PanelExpansion.json';
+import HOCAH from '../../Helpers/Data/houseOfCardsAgainstHumanityExpansion.json';
+import reject from '../../Helpers/Data/rejectExpansion.json';
+import reject2 from '../../Helpers/Data/reject2Expansion.json';
+import Canadian from '../../Helpers/Data/canadianExpansion.json';
 import Diagram from '../Diagram/Diagram';
 
 import './Main.scss';
 
 const defaultCards = ['', ' ', '  ', '    ', '     ', '      ', '       '];
 
+const allExpansions = [
+  CAHe1,
+  CAHe2,
+  CAHe3,
+  CAHe4,
+  CAHe5,
+  CAHe6,
+  greenbox,
+  nineties,
+  Box,
+  fantasy,
+  food,
+  science,
+  www,
+  hillary,
+  trumpvote,
+  trumpbag,
+  xmas2012,
+  xmas2013,
+  PAXE2013,
+  PAXP2013,
+  PAXE2014,
+  PAXEP2014,
+  PAXPP2014,
+  HOCAH,
+  reject,
+  reject2,
+  Canadian,
+];
+
 class Main extends React.Component {
   state = {
     blackCards: [],
     whiteCards: [],
     displayedCards: [],
+    expansions: [],
   }
 
   componentDidMount() {
     const blackCardsAsArray = base.blackCards.map((card) => Object.values(card)[0]);
-    this.setState({ blackCards: blackCardsAsArray, whiteCards: base.whiteCards, displayedCards: defaultCards });
+    const whiteCardsAsArray = [...base.whiteCards];
+    this.setState({ blackCards: blackCardsAsArray, whiteCards: whiteCardsAsArray, displayedCards: defaultCards });
   }
 
   selectRandomCards = () => {
@@ -33,7 +92,6 @@ class Main extends React.Component {
     const circleBC = blackCards[Math.floor(Math.random() * blackCards.length)];
     const circleABC = blackCards[Math.floor(Math.random() * blackCards.length)];
     randomCards.push([circleA, circleB, circleC, circleAB, circleAC, circleBC, circleABC]);
-    console.error('randomCards', randomCards);
     this.setState({ displayedCards: randomCards });
   }
 
@@ -66,15 +124,45 @@ class Main extends React.Component {
     return sets;
   }
 
+  selectCards = (expansions, expansionToCheck, expansionToCheckName) => {
+    const cards = [[], []];
+    if (expansions.includes(expansionToCheckName)) {
+      const filteredBlackCards = expansionToCheck.blackCards.map((card) => Object.values(card)[0]);
+      filteredBlackCards.forEach((card) => {
+        cards[0].push(card);
+      });
+      expansionToCheck.whiteCards.forEach((card) => {
+        cards[1].push(card);
+      });
+    }
+    return cards;
+  }
+
+  updateMainExpansions = (expansions) => {
+    const pendingBlackCards = base.blackCards.map((card) => Object.values(card)[0]);
+    const pendingWhiteCards = [...base.whiteCards];
+    allExpansions.forEach((exp) => {
+      const expansionName = exp.order[0];
+      const expansionCards = this.selectCards(expansions, exp, expansionName);
+      expansionCards[0].forEach((card) => pendingBlackCards.push(card));
+      expansionCards[1].forEach((card) => pendingWhiteCards.push(card));
+      return expansionCards;
+    });
+    this.setState({ expansions, blackCards: pendingBlackCards, whiteCards: pendingWhiteCards });
+  }
+
   render() {
     let printDiagram = '';
     if (this.state.blackCards.length > 0) {
       printDiagram = <Diagram
-          blackCards = {this.state.blackCards}
-          whiteCards = {this.state.whiteCards}
-          displayedCards = {this.state.displayedCards}
-          selectRandomCards = {this.selectRandomCards}
-          setupDiagram = {this.setupDiagram}
+          allExpansions={allExpansions}
+          blackCards={this.state.blackCards}
+          displayedCards={this.state.displayedCards}
+          expansions={this.state.expansions}
+          selectRandomCards={this.selectRandomCards}
+          setupDiagram={this.setupDiagram}
+          updateMainExpansions={this.updateMainExpansions}
+          whiteCards={this.state.whiteCards}
         />;
     }
 

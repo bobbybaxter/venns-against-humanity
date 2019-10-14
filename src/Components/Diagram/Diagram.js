@@ -1,6 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 import * as venn from 'venn.js';
+import ExpansionModal from '../ExpansionModal/ExpansionModal';
 
 import './Diagram.scss';
 
@@ -8,11 +9,18 @@ class Diagram extends React.Component {
   state = {
     width: 0,
     height: 0,
+    modal: false,
   }
 
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.expansion !== prevProps.expansion) {
+      this.setState({ expansions: this.props.expansions });
+    }
   }
 
   componentWillUnmount() {
@@ -27,13 +35,22 @@ class Diagram extends React.Component {
 
   printVenn = (setsData) => {
     const sets = setsData;
-    console.error('setsData', sets);
     const chart = venn.VennDiagram().width(this.state.width).height(this.state.height - 150);
     if (this.refs.venn) {
       d3.select(this.refs.venn)
         .datum(sets)
         .call(chart);
     }
+  }
+
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+    }));
+  }
+
+  updateDiagramExpansions = (expansions) => {
+    this.props.updateMainExpansions(expansions);
   }
 
   updateWindowDimensions = () => {
@@ -50,7 +67,14 @@ class Diagram extends React.Component {
         {this.drawVenn()}
         <div className="d-flex flex-row justify-content-center align-items-center">
           <button className="btn btn-primary mx-1" onClick={this.props.selectRandomCards}>Randomize!</button>
-          <button className="btn btn-primary mx-1" onClick={this.props.openModal}>Expansions</button>
+          <button className="btn btn-primary mx-1" onClick={this.toggle}>Expansions</button>
+          <ExpansionModal 
+            allExpansions={this.props.allExpansions}
+            expansions={this.props.expansions}
+            modal={this.state.modal}
+            toggle={this.toggle}
+            updateDiagramExpansions={this.updateDiagramExpansions}
+          />
         </div>
       </div>
     );
