@@ -44,72 +44,24 @@ class ExpansionModal extends React.Component {
   }
 
   render() {
-    const { modal, toggle } = this.props;
+    const { allExpansions, modal, toggle } = this.props;
     const modalText = '';
+    const printExpansionList = allExpansions.map((exp) => <FormGroup key={exp.order[0]} check>
+        <Label check>
+          <Input
+            checked={this.state.pendingExpansions.includes(exp.order[0])}
+            id={exp.order[0]}
+            onChange={this.handleCheckboxes}
+            type="checkbox" />{' '}
+          {exp.data.name}
+        </Label>
+      </FormGroup>);
+
     if (this.state.expansions) {
       return <Modal isOpen={modal} toggle={toggle}>
       <ModalBody>
         <Form>
-          <FormGroup check>
-            <Label check>
-              <Input
-                checked={this.state.pendingExpansions.includes('theFirstExpansion')}
-                id="theFirstExpansion"
-                onChange={this.handleCheckboxes}
-                type="checkbox" />{' '}
-              The First Expansion
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                checked={this.state.pendingExpansions.includes('theSecondExpansion')}
-                id="theSecondExpansion"
-                onChange={this.handleCheckboxes}
-                type="checkbox" />{' '}
-              The Second Expansion
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                checked={this.state.pendingExpansions.includes('theThirdExpansion')}
-                id="theThirdExpansion"
-                onChange={this.handleCheckboxes}
-                type="checkbox" />{' '}
-              The Third Expansion
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                checked={this.state.pendingExpansions.includes('theFourthExpansion')}
-                id="theFourthExpansion"
-                onChange={this.handleCheckboxes}
-                type="checkbox" />{' '}
-              The Fourth Expansion
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                checked={this.state.pendingExpansions.includes('theFifthExpansion')}
-                id="theFifthExpansion"
-                onChange={this.handleCheckboxes}
-                type="checkbox" />{' '}
-              The Fifth Expansion
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                checked={this.state.pendingExpansions.includes('theSixthExpansion')}
-                id="theSixthExpansion"
-                onChange={this.handleCheckboxes}
-                type="checkbox" />{' '}
-              The Sixth Expansion
-            </Label>
-          </FormGroup>
+          {printExpansionList}
         </Form>
       </ModalBody>
       <ModalFooter>

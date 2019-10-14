@@ -1,17 +1,26 @@
 /* eslint-disable max-len */
 import React from 'react';
 import base from '../../Helpers/Data/base.json';
-import theFirstExpansion from '../../Helpers/Data/theFirstExpansion.json';
-import theSecondExpansion from '../../Helpers/Data/theSecondExpansion.json';
-import theThirdExpansion from '../../Helpers/Data/theThirdExpansion.json';
-import theFourthExpansion from '../../Helpers/Data/theFourthExpansion.json';
-import theFifthExpansion from '../../Helpers/Data/theFifthExpansion.json';
-import theSixthExpansion from '../../Helpers/Data/theSixthExpansion.json';
+import CAHe1 from '../../Helpers/Data/theFirstExpansion.json';
+import CAHe2 from '../../Helpers/Data/theSecondExpansion.json';
+import CAHe3 from '../../Helpers/Data/theThirdExpansion.json';
+import CAHe4 from '../../Helpers/Data/theFourthExpansion.json';
+import CAHe5 from '../../Helpers/Data/theFifthExpansion.json';
+import CAHe6 from '../../Helpers/Data/theSixthExpansion.json';
 import Diagram from '../Diagram/Diagram';
 
 import './Main.scss';
 
 const defaultCards = ['', ' ', '  ', '    ', '     ', '      ', '       '];
+
+const allExpansions = [
+  CAHe1,
+  CAHe2,
+  CAHe3,
+  CAHe4,
+  CAHe5,
+  CAHe6,
+];
 
 class Main extends React.Component {
   state = {
@@ -90,10 +99,13 @@ class Main extends React.Component {
   updateMainExpansions = (expansions) => {
     const pendingBlackCards = base.blackCards.map((card) => Object.values(card)[0]);
     const pendingWhiteCards = [...base.whiteCards];
-
-    const theFirstExpansionCards = this.selectCards(expansions, theFirstExpansion, 'theFirstExpansion');
-    theFirstExpansionCards[0].forEach((card) => pendingBlackCards.push(card));
-    theFirstExpansionCards[1].forEach((card) => pendingWhiteCards.push(card));
+    allExpansions.forEach((exp) => {
+      const expansionName = exp.order[0];
+      const expansionCards = this.selectCards(expansions, exp, expansionName);
+      expansionCards[0].forEach((card) => pendingBlackCards.push(card));
+      expansionCards[1].forEach((card) => pendingWhiteCards.push(card));
+      return expansionCards;
+    });
     this.setState({ expansions, blackCards: pendingBlackCards, whiteCards: pendingWhiteCards });
   }
 
@@ -101,6 +113,7 @@ class Main extends React.Component {
     let printDiagram = '';
     if (this.state.blackCards.length > 0) {
       printDiagram = <Diagram
+          allExpansions={allExpansions}
           blackCards={this.state.blackCards}
           displayedCards={this.state.displayedCards}
           expansions={this.state.expansions}

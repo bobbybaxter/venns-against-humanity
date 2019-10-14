@@ -69,6 +69,7 @@ class Diagram extends React.Component {
           <button className="btn btn-primary mx-1" onClick={this.props.selectRandomCards}>Randomize!</button>
           <button className="btn btn-primary mx-1" onClick={this.toggle}>Expansions</button>
           <ExpansionModal 
+            allExpansions={this.props.allExpansions}
             expansions={this.props.expansions}
             modal={this.state.modal}
             toggle={this.toggle}
