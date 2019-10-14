@@ -1,6 +1,12 @@
 /* eslint-disable max-len */
 import React from 'react';
 import base from '../../Helpers/Data/base.json';
+import theFirstExpansion from '../../Helpers/Data/theFirstExpansion.json';
+import theSecondExpansion from '../../Helpers/Data/theSecondExpansion.json';
+import theThirdExpansion from '../../Helpers/Data/theThirdExpansion.json';
+import theFourthExpansion from '../../Helpers/Data/theFourthExpansion.json';
+import theFifthExpansion from '../../Helpers/Data/theFifthExpansion.json';
+import theSixthExpansion from '../../Helpers/Data/theSixthExpansion.json';
 import Diagram from '../Diagram/Diagram';
 
 import './Main.scss';
@@ -17,7 +23,8 @@ class Main extends React.Component {
 
   componentDidMount() {
     const blackCardsAsArray = base.blackCards.map((card) => Object.values(card)[0]);
-    this.setState({ blackCards: blackCardsAsArray, whiteCards: base.whiteCards, displayedCards: defaultCards });
+    const whiteCardsAsArray = [...base.whiteCards];
+    this.setState({ blackCards: blackCardsAsArray, whiteCards: whiteCardsAsArray, displayedCards: defaultCards });
   }
 
   selectRandomCards = () => {
@@ -66,8 +73,28 @@ class Main extends React.Component {
     return sets;
   }
 
+  selectCards = (expansions, expansionToCheck, expansionToCheckName) => {
+    const cards = [[], []];
+    if (expansions.includes(expansionToCheckName)) {
+      const filteredBlackCards = expansionToCheck.blackCards.map((card) => Object.values(card)[0]);
+      filteredBlackCards.forEach((card) => {
+        cards[0].push(card);
+      });
+      expansionToCheck.whiteCards.forEach((card) => {
+        cards[1].push(card);
+      });
+    }
+    return cards;
+  }
+
   updateMainExpansions = (expansions) => {
-    this.setState({ expansions });
+    const pendingBlackCards = base.blackCards.map((card) => Object.values(card)[0]);
+    const pendingWhiteCards = [...base.whiteCards];
+
+    const theFirstExpansionCards = this.selectCards(expansions, theFirstExpansion, 'theFirstExpansion');
+    theFirstExpansionCards[0].forEach((card) => pendingBlackCards.push(card));
+    theFirstExpansionCards[1].forEach((card) => pendingWhiteCards.push(card));
+    this.setState({ expansions, blackCards: pendingBlackCards, whiteCards: pendingWhiteCards });
   }
 
   render() {

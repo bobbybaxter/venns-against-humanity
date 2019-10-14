@@ -17,6 +17,12 @@ class Diagram extends React.Component {
     window.addEventListener('resize', this.updateWindowDimensions);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.expansion !== prevProps.expansion) {
+      this.setState({ expansions: this.props.expansions });
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
