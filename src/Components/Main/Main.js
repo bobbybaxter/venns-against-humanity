@@ -7,6 +7,27 @@ import CAHe3 from '../../Helpers/Data/theThirdExpansion.json';
 import CAHe4 from '../../Helpers/Data/theFourthExpansion.json';
 import CAHe5 from '../../Helpers/Data/theFifthExpansion.json';
 import CAHe6 from '../../Helpers/Data/theSixthExpansion.json';
+import greenbox from '../../Helpers/Data/greenBoxExpansion.json';
+import nineties from '../../Helpers/Data/90sNostalgiaExpansion.json';
+import Box from '../../Helpers/Data/boxExpansion.json';
+import fantasy from '../../Helpers/Data/fantasyExpansion.json';
+import food from '../../Helpers/Data/foodExpansion.json';
+import science from '../../Helpers/Data/scienceExpansion.json';
+import www from '../../Helpers/Data/worldWideWebExpansion.json';
+import hillary from '../../Helpers/Data/voteForHillaryExpansion.json';
+import trumpvote from '../../Helpers/Data/voteForTrumpExpansion.json';
+import trumpbag from '../../Helpers/Data/trumpSurvivalExpansion.json';
+import xmas2012 from '../../Helpers/Data/holiday2012Expansion.json';
+import xmas2013 from '../../Helpers/Data/holiday2013Expansion.json';
+import PAXE2013 from '../../Helpers/Data/paxEast2013Expansion.json';
+import PAXP2013 from '../../Helpers/Data/paxPrime2013Expansion.json';
+import PAXE2014 from '../../Helpers/Data/paxEast2014Expansion.json';
+import PAXEP2014 from '../../Helpers/Data/paxEast2014PanelExpansion.json';
+import PAXPP2014 from '../../Helpers/Data/paxPrime2014PanelExpansion.json';
+import HOCAH from '../../Helpers/Data/houseOfCardsAgainstHumanityExpansion.json';
+import reject from '../../Helpers/Data/rejectExpansion.json';
+import reject2 from '../../Helpers/Data/reject2Expansion.json';
+import Canadian from '../../Helpers/Data/canadianExpansion.json';
 import Diagram from '../Diagram/Diagram';
 
 import './Main.scss';
@@ -20,6 +41,27 @@ const allExpansions = [
   CAHe4,
   CAHe5,
   CAHe6,
+  greenbox,
+  nineties,
+  Box,
+  fantasy,
+  food,
+  science,
+  www,
+  hillary,
+  trumpvote,
+  trumpbag,
+  xmas2012,
+  xmas2013,
+  PAXE2013,
+  PAXP2013,
+  PAXE2014,
+  PAXEP2014,
+  PAXPP2014,
+  HOCAH,
+  reject,
+  reject2,
+  Canadian,
 ];
 
 class Main extends React.Component {
