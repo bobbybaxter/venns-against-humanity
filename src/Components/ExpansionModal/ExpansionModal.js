@@ -38,6 +38,15 @@ class ExpansionModal extends React.Component {
     }
   }
 
+  selectAll = () => {
+    const allExpansionNames = this.props.allExpansions.map((exp) => exp.order[0]);
+    this.setState({ pendingExpansions: allExpansionNames });
+  }
+
+  unselectAll = () => {
+    this.setState({ pendingExpansions: [] });
+  }
+
   updateExpansionModalExpansions = () => {
     this.props.updateDiagramExpansions(this.state.pendingExpansions);
     this.props.toggle();
@@ -60,7 +69,20 @@ class ExpansionModal extends React.Component {
     if (this.state.expansions) {
       return <Modal isOpen={modal} toggle={toggle}>
       <ModalBody>
-        <Form>
+        <div className="d-flex selectButtons">
+          <button
+            className="btn btn-outline-primary col-3"
+            onClick={this.selectAll}>
+            Select All
+          </button>
+          <button className="btn btn-outline-danger col-3"
+            onClick={this.unselectAll}>
+            Unselect All
+          </button>
+        </div>
+      </ModalBody>
+      <ModalBody className="modal-body-main">
+        <Form className="d-flex flex-column flex-wrap">
           {printExpansionList}
         </Form>
       </ModalBody>

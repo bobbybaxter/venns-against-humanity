@@ -1,3 +1,13 @@
 .ExpansionModal {
   display: block;
 }
+
+.modal-body-main {
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.selectButtons {
+  flex-direction: row;
+  justify-content: space-evenly;
+}
