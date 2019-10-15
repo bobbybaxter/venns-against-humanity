@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/venns-against-humanity/precache-manifest.c22262b5efd2e67e773d45b0331cd08b.js"
+  "/venns-against-humanity/precache-manifest.dd0a8cd9bae0cf51789030e2be94e538.js"
 );
 
 self.addEventListener('message', (event) => {
