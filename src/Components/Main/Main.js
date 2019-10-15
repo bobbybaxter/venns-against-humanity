@@ -81,17 +81,27 @@ class Main extends React.Component {
   selectRandomCards = () => {
     const { blackCards, whiteCards } = this.state;
     const randomCards = [];
-    const circleAText = whiteCards[Math.floor(Math.random() * whiteCards.length)];
-    const circleA = `c1 ${circleAText}`;
-    const circleBText = whiteCards[Math.floor(Math.random() * whiteCards.length)];
-    const circleB = `c1 ${circleBText}`;
-    const circleCText = whiteCards[Math.floor(Math.random() * whiteCards.length)];
-    const circleC = `c1 ${circleCText}`;
-    const circleAB = blackCards[Math.floor(Math.random() * blackCards.length)];
-    const circleAC = blackCards[Math.floor(Math.random() * blackCards.length)];
-    const circleBC = blackCards[Math.floor(Math.random() * blackCards.length)];
-    const circleABC = blackCards[Math.floor(Math.random() * blackCards.length)];
-    randomCards.push([circleA, circleB, circleC, circleAB, circleAC, circleBC, circleABC]);
+
+    // white cards are outside bubbles
+    for (let i = 0; i < 3; i += 1) {
+      let chosenCard = whiteCards[Math.floor(Math.random() * whiteCards.length)];
+      if (randomCards.includes(chosenCard)) {
+        chosenCard = whiteCards[Math.floor(Math.random() * whiteCards.length)];
+      }
+      const chosenCardString = `c1 ${chosenCard}`;
+      console.error(chosenCardString);
+      randomCards.push(chosenCardString);
+    }
+
+    // black cards are intersections
+    for (let i = 0; i < 4; i += 1) {
+      let chosenCard = blackCards[Math.floor(Math.random() * blackCards.length)];
+      if (randomCards.includes(chosenCard)) {
+        chosenCard = blackCards[Math.floor(Math.random() * blackCards.length)];
+      }
+      randomCards.push(chosenCard);
+    }
+
     this.setState({ displayedCards: randomCards });
   }
 
@@ -100,7 +110,7 @@ class Main extends React.Component {
     let sets = [];
     if (cardsInput) {
       // eslint-disable-next-line prefer-destructuring
-      cards = cardsInput[0] === '' ? cardsInput : cardsInput[0];
+      cards = cardsInput;
       const mainCircleSize = 10;
       const intersectionCircleSize = mainCircleSize * 0.4;
       const centerCircleSize = mainCircleSize * 0.2;
