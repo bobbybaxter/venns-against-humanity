@@ -29,13 +29,13 @@ class Diagram extends React.Component {
 
   drawVenn = () => {
     return (
-     <div ref="venn"></div>
+     <div className="vennDiv" ref="venn"></div>
     );
   }
 
   printVenn = (setsData) => {
     const sets = setsData;
-    const chart = venn.VennDiagram().width(this.state.width).height(this.state.height - 250);
+    const chart = venn.VennDiagram().width(this.state.width).height(this.state.height - 200);
     if (this.refs.venn) {
       d3.select(this.refs.venn)
         .datum(sets)

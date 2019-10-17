@@ -14,14 +14,19 @@
 // }
 
 .venn-circle {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .venn-intersection {
-  font-size: 7px;
+  font-size: 8px;
 }
 
-@media only screen and (min-height: 350px) {
+@media only screen and (min-width: 350px) {
+  .h1, h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
   .venn-circle {
     font-size: 12px;
   }
@@ -31,7 +36,7 @@
   }
 }
 
-@media only screen and (min-height: 500px) {
+@media only screen and (min-width: 500px) {
   .venn-circle {
     font-size: 14px;
   }
@@ -41,12 +46,12 @@
   }
 }
 
-@media only screen and (min-height: 700px) {
+@media only screen and (min-width: 700px) {
   .venn-circle {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .venn-intersection {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
