@@ -89,7 +89,6 @@ class Main extends React.Component {
         chosenCard = whiteCards[Math.floor(Math.random() * whiteCards.length)];
       }
       const chosenCardString = `c1 ${chosenCard}`;
-      console.error(chosenCardString);
       randomCards.push(chosenCardString);
     }
 
@@ -177,8 +176,9 @@ class Main extends React.Component {
     }
 
     return (
-        <div className="diagramDiv">
+        <div className="diagramDiv d-flex flex-column justify-content-center align-items-center">
           {printDiagram}
+          <small className="mt-3"><a href="https://github.com/bobbybaxter/venns-against-humanity">View on Github</a></small>
         </div>
     );
   }
