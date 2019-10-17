@@ -35,7 +35,7 @@ class Diagram extends React.Component {
 
   printVenn = (setsData) => {
     const sets = setsData;
-    const chart = venn.VennDiagram().width(this.state.width).height(this.state.height - 150);
+    const chart = venn.VennDiagram().width(this.state.width).height(this.state.height - 250);
     if (this.refs.venn) {
       d3.select(this.refs.venn)
         .datum(sets)
@@ -65,7 +65,7 @@ class Diagram extends React.Component {
       <div className="d-flex flex-column justify-content-center align-items-center">
         <h1 className="mt-3">Venns Against Humanity</h1>
         {this.drawVenn()}
-        <div className="d-flex flex-row justify-content-center align-items-center">
+        <div className="d-flex flex-row mt-3 justify-content-center align-items-center">
           <button className="btn btn-primary mx-1" onClick={this.props.selectRandomCards}>Randomize!</button>
           <button className="btn btn-primary mx-1" onClick={this.toggle}>Expansions</button>
           <ExpansionModal 
