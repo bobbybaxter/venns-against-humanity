@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2013ac961e050ca1ff54f7a3d8267cde",
+    "revision": "b2690e2a2ae5aa3ad605533f9067fbe6",
     "url": "/venns-against-humanity/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/venns-against-humanity/static/css/2.0624914a.chunk.css"
   },
   {
-    "revision": "97f3dbc0942c68111e11",
-    "url": "/venns-against-humanity/static/css/main.9388a813.chunk.css"
+    "revision": "8d6fbfc87a8b72b9f626",
+    "url": "/venns-against-humanity/static/css/main.b6af51af.chunk.css"
   },
   {
     "revision": "ff67e99361f53106c150",
     "url": "/venns-against-humanity/static/js/2.21984a07.chunk.js"
   },
   {
-    "revision": "97f3dbc0942c68111e11",
-    "url": "/venns-against-humanity/static/js/main.f9941f26.chunk.js"
+    "revision": "8d6fbfc87a8b72b9f626",
+    "url": "/venns-against-humanity/static/js/main.2089cb9c.chunk.js"
   },
   {
     "revision": "96168403928410090e48",

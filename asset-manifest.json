@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/venns-against-humanity/static/css/main.9388a813.chunk.css",
-    "main.js": "/venns-against-humanity/static/js/main.f9941f26.chunk.js",
-    "main.js.map": "/venns-against-humanity/static/js/main.f9941f26.chunk.js.map",
+    "main.css": "/venns-against-humanity/static/css/main.b6af51af.chunk.css",
+    "main.js": "/venns-against-humanity/static/js/main.2089cb9c.chunk.js",
+    "main.js.map": "/venns-against-humanity/static/js/main.2089cb9c.chunk.js.map",
     "runtime-main.js": "/venns-against-humanity/static/js/runtime-main.fae59b7e.js",
     "runtime-main.js.map": "/venns-against-humanity/static/js/runtime-main.fae59b7e.js.map",
     "static/css/2.0624914a.chunk.css": "/venns-against-humanity/static/css/2.0624914a.chunk.css",
     "static/js/2.21984a07.chunk.js": "/venns-against-humanity/static/js/2.21984a07.chunk.js",
     "static/js/2.21984a07.chunk.js.map": "/venns-against-humanity/static/js/2.21984a07.chunk.js.map",
     "index.html": "/venns-against-humanity/index.html",
-    "precache-manifest.11b1647179b236173db00b09c93506b3.js": "/venns-against-humanity/precache-manifest.11b1647179b236173db00b09c93506b3.js",
+    "precache-manifest.c6db66a49399abfe7738fa907dde9f03.js": "/venns-against-humanity/precache-manifest.c6db66a49399abfe7738fa907dde9f03.js",
     "service-worker.js": "/venns-against-humanity/service-worker.js",
     "static/css/2.0624914a.chunk.css.map": "/venns-against-humanity/static/css/2.0624914a.chunk.css.map",
-    "static/css/main.9388a813.chunk.css.map": "/venns-against-humanity/static/css/main.9388a813.chunk.css.map"
+    "static/css/main.b6af51af.chunk.css.map": "/venns-against-humanity/static/css/main.b6af51af.chunk.css.map"
   }
 }
